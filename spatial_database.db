@@ -1,0 +1,37 @@
+create table cola_mrp(
+mkt_id number primary key, name varchar(20), shapeMDSYS.SDO_Geometry
+);
+
+insert into cola_mrp values (1,'cola_a',MDSYS.SDO_GEOMETRY( 2003,NULL,NULL, MDSYS.SDO_ELEM_INFO_ARRAY (1,1003,3),
+MDSYS.SDO_ORDINATE_ARRAY (1,1,5,7)))
+/
+
+insert into cola_mrp values (2,'cola_b',MDSYS.SDO_GEOMETRY( 2003,NULL,NULL, MDSYS.SDO_ELEM_INFO_ARRAY (1,1003,1),
+MDSYS.SDO_ORDINATE_ARRAY (5,1,8,1,8,6,5,7,5,1)))
+/
+
+insert into cola_mrp values (3,'cola_c',MDSYS.SDO_GEOMETRY( 2003,NULL,NULL, MDSYS.SDO_ELEM_INFO_ARRAY (1,1003,1),
+MDSYS.SDO_ORDINATE_ARRAY (3,3,6,3,6,5,4,5,3,3)))
+/
+
+insert into cola_mrp values (4,'cola_d', MDSYS.SDO_GEOMETRY( 2003,NULL,NULL, MDSYS.SDO_ELEM_INFO_ARRAY(1,1003,4), MDSYS.SDO_ORDINATE_ARRAY (7,9,10,9,8,11)))
+/
+
+insert into user_SDO_GEOM_METADATA values('cola_mrp','shape', MDSYS.SDO_DIM_ARRAY( MDSYS.SDO_DIM_ELEMENT('X',0,20,0.005), MDSYS.SDO_DIM_ELEMENT('Y',0,20,0.005)
+),NULL);
+
+create index cola_spatial_idx oncola_market(location) Indextype Is mdsys.spatial_index;
+
+select SDO_GEOM.SDO_INTERSECTION (c_a.shape,c_c.shape,0.005) fromcola_mrpc_a,cola_mrpc_c
+where c_a.name='cola_a' AND c_c.name='cola_c';
+
+SELECT SDO_GEOM.RELATE(c_c.shape, 'EQUAL', c_a.shape,0.005)
+FROM cola_mrpc_c, cola_mrpc_a
+WHERE c_c.name='cola_c' AND c_a.name = 'cola_a';
+
+select name,SDO_GEOM.SDO_AREA(shape,0.005) from cola_mrp;
+
+select c.name,SDO_GEOM.SDO_AREA(c.shape,0.005) from cola_mrp cwhere c.name='cola_a';
+
+select SDO_GEOM.SDO_DISTANCE(c_b.shape,c_d.shape,0.005) fromcola_mrpc_b,cola_mrpc_d
+where c_b.name= 'cola_b' AND c_d.name ='cola_d';
