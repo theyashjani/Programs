@@ -1,0 +1,28 @@
+create table Emp_Appnt( Acc_Nonumber(10),Name varchar2(10), RECDate date, RETDate date);
+
+insert into Emp_Appnt values(1235,'Aakash Pal','08-mar-1987','12-oct-2015');
+insert into Emp_Appnt values(1235,'Alpa','08-oct-1978','19-nov-2020');
+insert into Emp_Appnt values(1237,'ac','25-jan-1988','20-feb-2021');
+insert into Emp_Appnt values(1278,'xyz','05-dec-1978','02-mar-2017');
+insert into emp_appnt values(1789,'mon','06-nov-1999','22-mar-2021');
+
+select * from emp_appnt;
+
+select * from emp_appnt where RECDate='25-jan-1988';
+
+select * from emp_appnt where RETDate='22-mar-2021';
+
+create table tbl_shares1(
+C_Name varchar2(10), No_Share Number(10), Price number(10), TransTime varchar2(10) Default To_char(sysdate,'HH:MI'));
+
+insert into tbl_shares1 values('Aakash', 123,500,Default);
+insert into tbl_shares1 values('Alpa', 121,550,Default);
+insert into tbl_shares1 values('VIK', 124,600,Default);
+insert into tbl_shares1 values('RAJ', 125,750,Default);
+insert into tbl_shares1 values('SAK', 133,1000,Default);
+
+select * from tbl_shares;
+
+select * from tbl_shares where price>100 and TransTime='01:24';
+
+select * from tbl_shares1 where price=(select max(price) from tbl_shareswhere TransTime='01:25');
