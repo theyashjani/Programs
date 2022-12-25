@@ -1,4 +1,4 @@
-import ch.aplu.robotsim.*; // Class
+import ch.aplu.robotsim.*; // Class contains
 class MoveWithGear
 {
       MoveWithGear()
