@@ -6,7 +6,7 @@ class MoveWithGear
                NxtRobot robot = new NxtRobot();
                Gear gear = new Gear();
                robot.addPart(gear);
-               // Movement
+               // Movement of Robot
                gear.forward(2000);
                gear.setSpeed(10);
                gear.left(3000);
