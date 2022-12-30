@@ -16,6 +16,8 @@ class MoveWithGear
                Tools.delay(2000);
                robot.exit();
       }
+      
+      // Main method
 
       public static void main(String[] args)
       {
