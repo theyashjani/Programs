@@ -17,7 +17,7 @@ class MoveWithGear
                robot.exit();
       }
       
-      // Main method
+      // Main method for
 
       public static void main(String[] args)
       {
