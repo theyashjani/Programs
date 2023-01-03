@@ -1,6 +1,6 @@
 import collections
 
-# Function for
+# Function for 
 def bfs(graph, root):
 
     visited, queue = set(), collections.deque([root])
