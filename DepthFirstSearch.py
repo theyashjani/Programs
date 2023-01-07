@@ -4,7 +4,7 @@ def dfs(graph, start, visited=None):
         visited = set()
     visited.add(start)
     
-    # Print
+    # Print the statt
     print(start)
 
     for next in graph[start] - visited:
